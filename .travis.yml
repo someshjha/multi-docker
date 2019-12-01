@@ -21,3 +21,5 @@ after_success:
 - docker push someshjha/multi-nginx
 - docker push someshjha/multi-server
 - docker push someshjha/multi-worker
+
+language: generic
