@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install: 
-  - docker build -t someshjha/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t someshjha/react-test -f ./client/Dockerfile ./client
 
 script: 
   - docker run -e CI=true someshjha/react-test npm run test -- --coverage
@@ -15,11 +15,11 @@ after_success:
   - docker build -t someshjha/multi-worker ./worker
 
 # Log in to the docker CLI
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Take those images and push them to docker hub
-- docker push someshjha/multi-client
-- docker push someshjha/multi-nginx
-- docker push someshjha/multi-server
-- docker push someshjha/multi-worker
+  - docker push someshjha/multi-client  
+  - docker push someshjha/multi-nginx 
+  - docker push someshjha/multi-server
+  - docker push someshjha/multi-worker
 
 language: generic
